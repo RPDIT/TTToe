@@ -13,28 +13,28 @@ The game logic was a process of problem-solving that I feel I gained a lot from 
 ```
 $ python board.py
 Input the single character you would like to use as a marker. Z
-  |    |
-  |    |
-  |    |
+   |    |
+   |    |
+   |    |
 Player Z: Enter the x,y values 1,1
-  |    |
-  | Z |
-  |    |
+   |    |
+   | Z |
+   |    |
 Player O: Enter the x,y values 2,2
-  |    | O
-  | Z |
-  |    |
+   |    | O
+   | Z |
+   |    |
 Player Z: Enter the x,y values 0,2
-  |    | O
-  | Z |
-  |    | Z
+   |    | O
+   | Z |
+   |    | Z
 Player O: Enter the x,y values 2,1
-| O | O
-| Z |
-| | Z
+   | O | O
+   | Z |
+   |    | Z
 Player Z: Enter the x,y values 2,0
 Z | O | O
-| Z |
-| | Z
+   | Z |
+   |    | Z
 Player 1 wins!
 ```
