@@ -12,7 +12,6 @@ def main():
     turn = 1
     won = 0
 
-
     while True:
         marker_selection = input("Input the single character you would like to use as a marker. ")
         if len(marker_selection) == 1:
