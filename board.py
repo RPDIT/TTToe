@@ -9,9 +9,9 @@ class player ():
         return self.checkWin(board)
 
     def showBoard(self, boardMatrix):
-        print(f"{boardMatrix[2][0]}  |  {boardMatrix[2][1]}  |  {boardMatrix[2][2]}  |  ")
-        print(f"{boardMatrix[1][0]}  |  {boardMatrix[1][1]}  |  {boardMatrix[1][2]}  |  ")
-        print(f"{boardMatrix[0][0]}  |  {boardMatrix[0][1]}  |  {boardMatrix[0][2]}  |  ")
+        print(f"{boardMatrix[2][0]}  |  {boardMatrix[2][1]}  |  {boardMatrix[2][2]}")
+        print(f"{boardMatrix[1][0]}  |  {boardMatrix[1][1]}  |  {boardMatrix[1][2]}")
+        print(f"{boardMatrix[0][0]}  |  {boardMatrix[0][1]}  |  {boardMatrix[0][2]}")
     
     def checkPosition(self, cords, board):
         if board[cords[0]][cords[1]] != "":
@@ -23,7 +23,7 @@ class player ():
     def getInput(self):
         selected = False
         while True:
-            cords = input(f" Player {self.marker}: Enter the X and Y values for where you want to place your marker with a comma between them.")
+            cords = input(f" Player {self.marker}: Enter the x,y values ")
             cordStr = str(cords)
             try: 
                 cordArray = cordStr.split(" , ")
