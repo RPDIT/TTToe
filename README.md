@@ -8,7 +8,7 @@ Each turn, the system takes a comma-separated x,y value, checks that the input i
 
 # Thoughts
 
-The game logic was a process of problem-solving that I feel I gained a lot from on day 1, and I had a functioning game by the end of it. Day 2, however, was spent refining the game and working on input validation, trying to ensure that an incorrect input would not cause the entire application to crash and would instead prompt the user to input the correct value.
+The game logic was a process of problem-solving that I feel I gained a lot from on day 1, and I had a functioning game by the end of it. Day 2, however, was spent refining the game and working on input validation, trying to ensure that an incorrect input would not cause the entire application to crash and would instead prompt the user to input the correct value with a suggestion to point them in the right direction.
 
 ```
 $ python board.py
