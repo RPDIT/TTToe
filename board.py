@@ -7,11 +7,6 @@ def p2Marker(selected):
         player2 = Player("X")
     return player2
 
-
-def tooLong(marker): 
-    return len(marker) == 1
-
-
 def main(): 
     board = [["","",""],["","",""],["","",""]]
     turn = 1
@@ -20,7 +15,7 @@ def main():
 
     while True:
         marker_selection = input("Input the single character you would like to use as a marker. ")
-        if tooLong(marker_selection):
+        if len(marker_selection) == 1:
             break
         else: 
             print("Marker Is too long.")
