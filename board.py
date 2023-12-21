@@ -1,44 +1,61 @@
 from player import Player
 
-def p2Marker(selected):
-    if (selected != "O"):
-        player2 = Player("O")
-    else: 
-        player2 = Player("X")
-    return player2
+class Engine:
+    def __init__(self):
+        self.board = [["","",""],["","",""],["","",""]]
+        self.turn = 1
+        self.won = 0
+        self.getInput()
+    
+    def getInput(self):
+        while True:
+            self.marker_selection = input("Input the single character you would like to use as a marker. ")
+            if len(self.marker_selection) == 1:
+                break
+            else: 
+                print("Marker Is too long.")
+                continue
+                
+        self.player1 =  Player(self.marker_selection, "Player 1")
+        self.player2 = self.p2Marker()
+        self.player1.showBoard(self.board)
+        self.gameState()
 
-def main(): 
-    board = [["","",""],["","",""],["","",""]]
-    turn = 1
-    won = 0
-
-    while True:
-        marker_selection = input("Input the single character you would like to use as a marker. ")
-        if len(marker_selection) == 1:
-            break
+    def p2Marker(self):
+        if (self.marker_selection != "O"):
+            player2 = Player("O", "Player 2")
         else: 
-            print("Marker Is too long.")
-            continue
-            
-    player1 =  Player(marker_selection)
-    player2 = p2Marker(marker_selection)
-    player1.showBoard(board)
+            player2 = Player("X", "Player 2")
+        return player2
+    
+    def handleGameState(self):
+        if self.won == 1: 
+            print(f"{self.current_player.name} has Won!")
+            return
+        elif self.won == 2: 
+            print(f"It's a stalemate, nobody wins.")
+            return
+    
+    def gameState(self):
+        self.current_player = self.whichPlayer()
+        self.won = self.current_player.takeTurn(self.board)
+        self.turn = self.turn * -1
+        
+    def whichPlayer(self):
+        if self.turn == 1: 
+            return self.player1
+        else: 
+            return self.player2
 
-    while (won == 0):
-        status = player1.takeTurn(board, turn)
-        if (status == True):
-            won = 1
-            print("Player 1 wins!")
-            break
-        status = player2.takeTurn(board, turn)
-        if (status == True):
-            won = 1
-            print("Player 2 wins!")
-            break
-    return
+if __name__ == '__main__':
+    main = Engine()
+    while main.won == 0: 
+        main.gameState()
+        continue
+    main.handleGameState()
+    
 
 
-main()
 
 
 
