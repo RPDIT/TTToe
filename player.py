@@ -1,11 +1,12 @@
 class Player (): 
    
-    def __init__( self, marker): 
+    def __init__( self, marker, name): 
         self.marker = marker
+        self.name = name
    
     def placeMarker(self, cords, board): # takes x,y values as a list of ints as cords
         board[cords[0]][cords[1]] = self.marker
-        return self.checkWin(board)
+        return board
 
     def showBoard(self, displayBoard):
         print(f" {displayBoard[2][0]}  |  {displayBoard[2][1]}  |  {displayBoard[2][2]} ")
@@ -30,6 +31,13 @@ class Player ():
             except:
                 print("Please re-enter your input with only an X and Y value separated by a comma within the ranges 0-2. IE: 0,1 0,0 2,2")
                 continue
+
+    def checkStalemate(self, boardInput):
+        for row in boardInput:
+            for entry in row:
+                if entry == "":
+                    return False
+        return True
     
     def checkWin(self, boardInput):
         matrix = self.genMatrix(boardInput)
@@ -37,7 +45,10 @@ class Player ():
             status = m.count(self.marker) == 3
             if (status == True):
                 return 1
-        return 0
+        if self.checkStalemate(boardInput):
+            return 2
+        else:
+            return 0
 
     def genMatrix(self, inputBoard):
         return [
@@ -60,15 +71,12 @@ class Player ():
                 return False
         return True
 
-    def takeTurn(self, inputBoard, turnCounter):
+    def takeTurn(self, inputBoard):
         while True:
             move1 = self.getInput()
             if self.validateInput(move1):
                 if self.checkPosition(move1, inputBoard):
-                    play = self.placeMarker(move1, inputBoard)
+                    inputBoard = self.placeMarker(move1, inputBoard)
                     break
         self.showBoard(inputBoard)
-        if (play == True):
-            return 1
-        turnCounter = turnCounter * -1
-        return 0
+        return self.checkWin(inputBoard)
